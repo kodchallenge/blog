@@ -79,33 +79,33 @@ function BlogPostPage({ post }) {
   )
 }
 
-export async function getStaticPaths() {
-  const res = await fetch(`${process.env.DOMAIN}/api/posts`)
-  const posts = await res.json()
+// export async function getStaticPaths() {
+//   const res = await fetch(`${process.env.DOMAIN}/api/posts`)
+//   const posts = await res.json()
 
-  const paths = posts.data.map((post) => ({
-    params: { slug: post.slug },
-  }))
+//   const paths = posts.data.map((post) => ({
+//     params: { slug: post.slug },
+//   }))
 
-  return { paths, fallback: false }
-}
-
-export async function getStaticProps({ params }) {
-  const res = await fetch(`${process.env.DOMAIN}/api/posts/${params.slug}`)
-  const post = await res.json()
-
-  return { props: {post: post.data} }
-}
-
-// BlogPostPage.getInitialProps = async ({ req, query, res }) => {
-//   const resData = await fetch(`${process.env.DOMAIN}/api/posts/${query.slug}`)
-//   const result = await resData.json()
-
-//   if (result.success && result.data) {
-//     return { post: result.data }
-//   }
-//   res.redirect("/")
-//   return {post: null}
+//   return { paths, fallback: false }
 // }
+
+// export async function getStaticProps({ params }) {
+//   const res = await fetch(`${process.env.DOMAIN}/api/posts/${params.slug}`)
+//   const post = await res.json()
+
+//   return { props: {post: post.data} }
+// }
+
+BlogPostPage.getInitialProps = async ({ req, query, res }) => {
+  const resData = await fetch(`${process.env.DOMAIN}/api/posts/${query.slug}`)
+  const result = await resData.json()
+
+  if (result.success && result.data) {
+    return { post: result.data }
+  }
+  res.redirect("/")
+  return {post: null}
+}
 
 export default BlogPostPage
