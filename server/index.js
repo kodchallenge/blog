@@ -6,10 +6,9 @@ const cors = require('cors');
 require("./db")
 const appRouter = require("./routes/route");
 const dev = process.env.NODE_ENV !== 'production'
-const hostname = 'localhost'
 const PORT = process.env.PORT || 3000
 
-const nextApp = next({dev, hostname, PORT})
+const nextApp = next({dev, PORT})
 const handle = nextApp.getRequestHandler()
 
 
