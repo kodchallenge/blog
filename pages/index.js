@@ -14,7 +14,8 @@ const Home = ({posts}) => {
 }
 
 Home.getInitialProps = async ({req, query}) => {
-  const resData = await fetch(`${process.env.DOMAIN}/api/posts`)
+  const hostname = req.headers.host
+  const resData = await fetch(`${hostname}/api/posts`)
   const result = await resData.json()
 
   if(result.success) {
