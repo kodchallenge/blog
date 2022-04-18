@@ -6,10 +6,9 @@ const cors = require('cors');
 require("./db")
 const appRouter = require("./routes/route");
 const dev = process.env.NODE_ENV !== 'production'
-const hostname = 'localhost'
 const PORT = process.env.PORT || 3000
 
-const nextApp = next({dev, hostname, PORT})
+const nextApp = next({dev})
 const handle = nextApp.getRequestHandler()
 
 
@@ -19,7 +18,7 @@ nextApp.prepare().then(() => {
     app.use(bodyParser.urlencoded({extended: true}))
     app.use(bodyParser.json())
 
-    app.use(cors({ origin: process.env.DOMAIN, credentials: true }))    
+    app.use(cors())
 
     app.use("/api", appRouter)
 
