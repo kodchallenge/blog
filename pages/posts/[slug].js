@@ -81,7 +81,7 @@ function BlogPostPage({ post }) {
 
 BlogPostPage.getInitialProps = async ({ req, query, res }) => {
   const hostname = req.headers.host
-  const resData = await fetch(`${hostname}/api/posts/${query.slug}`)
+  const resData = await fetch(`http://localhost:3000/api/posts/${query.slug}`)
   const result = await resData.json()
 
   if (result.success && result.data) {

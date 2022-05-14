@@ -8,6 +8,7 @@ const Home = ({posts}) => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <p>test</p>
   	  <BlogList posts={posts}/>
     </div>
   )
@@ -15,9 +16,10 @@ const Home = ({posts}) => {
 
 Home.getInitialProps = async ({req, query}) => {
   const hostname = req.headers.host
-  const resData = await fetch(`${hostname}/api/posts`)
+  const resData = await fetch(`http://localhost:3000/api/posts`)
   const result = await resData.json()
 
+  console.log(result)
   if(result.success) {
     return {posts: result.data}
   }

@@ -8,7 +8,7 @@ const appRouter = require("./routes/route");
 const dev = process.env.NODE_ENV !== 'production'
 const PORT = process.env.PORT || 3000
 
-const nextApp = next({dev, PORT})
+const nextApp = next({dev})
 const handle = nextApp.getRequestHandler()
 
 
