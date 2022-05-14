@@ -8,7 +8,6 @@ const Home = ({posts}) => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <p>test</p>
   	  <BlogList posts={posts}/>
     </div>
   )
