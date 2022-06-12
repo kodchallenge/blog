@@ -1,1 +1,10 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+KodChallenge Blog project.
+
+Similar in design to the Riot Games blog.
+
+## Tech Stack
+
+- Next.js
+- Styled Components
+- Node.js
+- MongoDB
